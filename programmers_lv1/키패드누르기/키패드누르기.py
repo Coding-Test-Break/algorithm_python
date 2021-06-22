@@ -11,6 +11,7 @@ def coordinator(num):
         col = 1
     return row, col
 
+
 def solution(numbers, hand):
     answer = ''
     left = set([1, 4, 7])
@@ -52,5 +53,4 @@ def solution(numbers, hand):
                     answer += 'L'
                     left_row, left_col = row, col
 
-    
     return answer
