@@ -1,13 +1,26 @@
-def solution(a, b):
-    if a + b == 0:
-        return 0
-    else:
-        if a*b < 0:
-            return abs(a+b) * ((abs(a) + 1 + abs(b)) / 2) * ((a + b) / abs(a + b))
-        if a*b > 0:
-            return (abs(b-a) + 1) * (abs(a + b) / 2) * ((a + b) / abs(a + b))
-        if a*b == 0:
-            return abs(a + b) * ((abs(a + b) + 1) / 2) * ((a + b) / abs(a + b))
+def solution(num):
+    temp = num % 10 
+    compare = num // 10 + num % 10
+    count = 1
+    while num != compare:
+        if compare // 10 != 0:
+            temp = compare % 10
+            compare = compare // 10 + compare % 10
+        else: 
+            compare = temp * 10 + compare
+        count += 1
+        print(count)
 
-def adder(a, b):
-    return (abs(a-b)+1)*(a+b)//2
+    while num != divider(compare, temp)[0]:
+        count +=1 
+        
+    
+    return count
+
+def divider(num, temp):
+    if num >= 10:
+        return [num // 10 + num % 10, num % 10]
+    else: return [num + temp * 10, num]
+            
+
+print(solution(26))
