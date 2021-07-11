@@ -1,10 +1,4 @@
-# def solution(s, n):
-#     for i, j in enumerate(s):
-#         if s[i].isupper():
-#             s[i] = chr((ord(j) - 65 + n) % 26 + 65)
-#         elif s[i].islower():
-#             s[i] = chr((ord(j) - 97 + n) % 26 + 97)
-#     return s
+``` python 
 def solution(s, n):
     answer = ""
     for i in s:
@@ -15,8 +9,6 @@ def solution(s, n):
         elif i == " ": answer += " "
         
     return answer
-
-
-print(solution("a B z", ))
-
-
+```
+- `str` 을 `list`로 변환한 후 대입 -> `"".join()` 하는 것도 방법이다. 
+- ASCII 코드 !
