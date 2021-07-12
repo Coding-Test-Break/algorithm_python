@@ -1,6 +1,5 @@
 def solution(n, arr1, arr2):
     answer = [[] for i in range(n)]
-    print(answer)
     binary_arr1 = list(); binary_arr2 = list()
     for i , j in zip(arr1, arr2):
         binary_arr1.append(to_binary(i, n))
