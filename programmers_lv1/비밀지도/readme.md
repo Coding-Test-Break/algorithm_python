@@ -1,3 +1,4 @@
+``` python
 def solution(n, arr1, arr2):
     answer = [[] for i in range(n)]
     print(answer)
@@ -21,12 +22,8 @@ def to_binary(num, arrLen):
         arr_binary.append(num // 2 ** i)
         num = num % 2 ** i
     return arr_binary
-        
-# def find_treasure(arr1, arr2, answer):
-#     for i, j in zip(arr1, arr2):
-#         if i or j == 1:
-#             answer[]    
+```
 
-a = solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28])
-
-print(any)
+- `bin()`, `oct()`, `hex()` 내장함수를 통해 `2진수`, `8진수`, `16진수`를 다룰 수 있다. 
+- 각각 string 형식으로 return 해주는데, 앞에 `0b`, `0o`, `0x` 가 붙으니 원하는 수를 return 한 후 indexing을 거쳐주면 편하게 이용할 수 있을듯..! 
+- `.rjust()`, `.ljust()`, `.zfill()` 함수도 기회가 되면 이용해 볼 것 

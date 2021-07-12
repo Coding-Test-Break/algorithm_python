@@ -21,12 +21,3 @@ def to_binary(num, arrLen):
         arr_binary.append(num // 2 ** i)
         num = num % 2 ** i
     return arr_binary
-        
-# def find_treasure(arr1, arr2, answer):
-#     for i, j in zip(arr1, arr2):
-#         if i or j == 1:
-#             answer[]    
-
-a = solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28])
-
-print(any)
