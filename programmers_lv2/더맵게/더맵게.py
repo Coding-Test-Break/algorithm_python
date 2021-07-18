@@ -8,9 +8,3 @@ def solution(scoville, K):
         count += 1
     return count
 
-
-a = [7, 5, 3]
-heapq.heapify(a)
-heapq.heappush(a, 2)
-# heapq.heappop(a)
-print(a)
