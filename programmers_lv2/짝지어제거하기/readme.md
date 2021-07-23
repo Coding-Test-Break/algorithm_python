@@ -28,4 +28,4 @@ def solution_recursive(s):
 - programmers에 제출할 경우 런타임 에러로 통과하지 못한다.. 
 - replace랑 for문이 많아서..? 
 - `재귀함수` 작성 시 return을 중간에 잘 활용하자
-    - return 말고 그냥 `solution()`을 실행하고 `break`을 해주면 뒤에 문장 때문에 값이 `None`으로 나온다. ㄹ
+    - return 말고 그냥 `solution()`을 실행하고 `break`을 해주면 뒤에 문장 때문에 값이 `None`으로 나온다.
