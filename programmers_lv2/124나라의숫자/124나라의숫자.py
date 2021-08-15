@@ -8,4 +8,3 @@ def solution(n):
         else: n = n // 3
     
     return answer
-
