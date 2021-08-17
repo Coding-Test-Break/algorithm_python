@@ -4,15 +4,13 @@ def solution(s):
         result_array = calculator(s, i)
         while (0 in result_array):
             result_array.remove(0)
-        print(result_array)
         total_len = len(s) - sum(result_array) * i + len(result_array) 
         count = 0
         for i in result_array:
-            if i // 10: 
+            if (i + 1) // 10: 
                 count += len(str(i // 10))
             
         total_len += count
-        print(total_len)
         if total_len < answer:
             answer = total_len
         
@@ -30,10 +28,3 @@ def calculator(array, split_len):
             index += 1
             new_array.append(0)
     return new_array
-
-aa = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
-# print(calculator(aa, 3))
-# print(solution(aa))
-k = 99
-print(len(str(k // 10)))
