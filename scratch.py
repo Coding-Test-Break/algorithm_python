@@ -1,17 +1,18 @@
 import sys
-import heapq
 
 N = int(sys.stdin.readline())
-
-heap = list()
+schedule = list()
 
 for _ in range(N):
-  x = int(sys.stdin.readline())
-  if x == 0:
-    try:
-      print(heapq.heappop(heap))
-    except IndexError:
-      print(0)
-  else: 
-    heapq.heappush(heap, x)
+  s_t, e_t = map(int, sys.stdin.readline().split())
+  schedule.append([s_t, e_t])
 
+schedule.sort(key= lambda x: (x[1], x[0]))
+end_time = 0
+count = 0
+for s in schedule:
+  if end_time <= s[0]:
+    count += 1
+    end_time = s[1]
+
+print(count)
