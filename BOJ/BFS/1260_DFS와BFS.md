@@ -1,19 +1,15 @@
+```python
 from copy import deepcopy
 import sys
 from collections import deque
 
 def dfs(i):
-  if visited[i]:
-    return
   visited[i] = True
   print(i, end= " ")
-  for node in graph[i]:
-    dfs(node)
-
-#   while graph[i]:
-#     node = graph[i].popleft()
-#     if not visited[node]:
-#       dfs(node)
+  while graph[i]:
+    node = graph[i].popleft()
+    if not visited[node]:
+      dfs(node)
 
 def bfs(i):
   q = deque()
@@ -50,3 +46,18 @@ visited_b = deepcopy(visited)
 dfs(V)
 print()
 bfs(V)
+```
+
+- 생각해보니까 dfs 문제 풀 때는 굳이 `deque`를 쓰지 않고 for문으로 순회하는게 나았을 것 같다.
+
+```python
+def dfs(V):
+  if visited[V]:
+    return
+  visited[V] = True
+  print(V, end = " ")
+  for node in graph[V]:
+    dfs(node)
+```
+
+이런 식으로
