@@ -1,52 +1,29 @@
-from copy import deepcopy
 import sys
-from collections import deque
 
-def dfs(i):
-  if visited[i]:
-    return
-  visited[i] = True
-  print(i, end= " ")
-  for node in graph[i]:
-    dfs(node)
+V, E = map(int, sys.stdin.readline().split())
+K = int(sys.stdin.readline())
 
-#   while graph[i]:
-#     node = graph[i].popleft()
-#     if not visited[node]:
-#       dfs(node)
+def dfs(s, depth):
+  if d[s] == 'INF' or d[s] > depth:
+    d[s] = depth
+    
+    for node in graph[s]:
+      dfs(node, d[s] + dist[u][v])
+    
 
-def bfs(i):
-  q = deque()
-  q.append(i)
-  while q:
-    node = q.popleft()
-    if visited_b[node]:
-      continue
+graph = [[] for _ in range(V + 1)]
+dist = [[100 for _ in range(V + 1)] for _ in range(V + 1)]
+d = ['INF' for _ in range(V + 1)]
 
-    visited_b[node] = True
-    print(node, end= " ")
-
-    for i in graph_b[node]:
-      q.append(i)
+for _ in range(E):
+  u, v, w = map(int, sys.stdin.readline().split())
+  dist[u][v] = min(dist[u][v], w)
+  
+  if v not in graph[u]:
+    graph[u].append(v)
 
 
-N, M, V = map(int, sys.stdin.readline().split())
+dfs(K, 0)
 
-graph = [[] for _ in range(N + 1)]
-visited = [False for _ in range(N + 1)]
-
-for _ in range(M):
-  u, v = map(int, sys.stdin.readline().split())
-  if u not in graph[v]: graph[v].append(u)
-  if v not in graph[u]: graph[u].append(v)
-
-for i in range(len(graph)):
-  sorted_list = sorted(graph[i])
-  graph[i] = deque(sorted_list)
-
-graph_b = deepcopy(graph)
-visited_b = deepcopy(visited)
-
-dfs(V)
-print()
-bfs(V)
+for i in range(1, V + 1):
+  print(d[i], end= " ")
