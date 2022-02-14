@@ -1,33 +1,30 @@
 import sys
-from collections import deque
 
-N, M = map(int, sys.stdin.readline().split())
-knowing = list(map(int, sys.stdin.readline().split()))[1:]
+A, B, C = map(int, sys.stdin.readline().split())
 
-people_party = [[] for _ in range(N + 1)]
-party_people =[[] for _ in range(M + 1)]
-party = [True for _ in range(M + 1)]
-visited = [False for _ in range(N + 1)]
+dp = [False for _ in range(B + 1)]
+dp[1] = A
+num_kv = dict()
+num_kv[1] = A
 
-for party_idx in range(1, M + 1):
-  info = list(map(int, sys.stdin.readline().split()))[1:]
-  for i in info: 
-    people_party[i].append(party_idx)
-    party_people[party_idx].append(i)
+def recur(pow):
+  # try:
+    # return num_kv[pow]
+  # except KeyError:
+    # pass
+  # if pow == 1:
+  #   return A
+  if dp[pow]:
+    return dp[pow]
+  
+  num = recur((pow + 1) // 2) * recur(pow // 2)
+  # num_kv[pow] = num
+  dp[pow] = num
+  return num
+  # return recur((pow + 1) // 2) * recur(pow // 2)
 
-def bfs():
-  q = deque(knowing)
+# print(recur(B) % C)
+recur(B)
+# print(num_kv[B] % C)
+print(dp[B] % C)
 
-  while q:
-    kp_idx = q.popleft()  
-    if visited[kp_idx]:
-      continue
-    visited[kp_idx] = True
-    for party_idx in people_party[kp_idx]:
-      if party[party_idx]:
-        for people_idx in party_people[party_idx]:
-          q.append(people_idx)
-        party[party_idx] = False
-      
-bfs()
-print(sum(party) - 1)
