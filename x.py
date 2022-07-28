@@ -1,4 +1,3 @@
-```python
 import sys
 
 input = sys.stdin.readline
@@ -22,9 +21,9 @@ def dfs_stack(start_x, start_y):
   while stack:
     x, y = stack.pop()
     if graph[x][y] == 1:
-      graph[x][y] = -1
+      graph[x][y] = -1 
       visit_count += 1
-
+      
       for i in range(4):
         nx = x + dx[i]
         ny = y + dy[i]
@@ -43,31 +42,3 @@ for i in range(N):
 
 print(count)
 print(max_visit)
-```
-
-- 모든 노드 탐색이니까 dfs
-- 근데 재귀로 하니까 메모리 초과나서 stack을 이용한 dfs로 풀었다.
-
-#### 재귀 dfs를 이용한 풀이
-
-메모리 초과 났다.
-
-```python
-def dfs(x, y, visit_count):
-  graph[x][y] = -1
-
-  for i in range(4):
-    nx = x + dx[i]
-    ny = y + dy[i]
-    if nx > N - 1 or nx < 0 or ny > M - 1 or ny < 0:
-      continue
-    if graph[nx][ny] == 1:
-      visit_count = dfs(nx, ny, visit_count + 1)
-  return visit_count
-
-for i in range(N):
-  for j in range(M):
-    if graph[i][j] == 1:
-      max_visit = max(max_visit, dfs(i, j, 1))
-      count += 1
-```
